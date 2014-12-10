@@ -14,7 +14,7 @@ public class Music extends JFrame{
 	Random generator = new Random();
 	Timer timer = null;
 	Boolean cycleBool = false;
-	int i;
+	int chordIndex;
 	JButton fifthsButton = new JButton("Fifths");
 	int chordChoice;
 	String chordtoDisplay;
@@ -94,7 +94,6 @@ public class Music extends JFrame{
 	{
 		start.setEnabled(false);
 		cycleBool = true;
-		//fifthsButton.setEnabled(false);
 		stop.setEnabled(true);
 		int interval = Integer.parseInt(spinner.getValue().toString());
 		interval *= 1000;
@@ -106,7 +105,7 @@ public class Music extends JFrame{
 		});
 
 		timer.start();
-		chordLabel.setText(chords[i]);
+		chordLabel.setText(chords[chordIndex]);
 	}
 
 	protected void stopButtonActionPerformed(ActionEvent e) 
@@ -145,9 +144,9 @@ public class Music extends JFrame{
 		}
 		else
 		{
-			i++;
-			chordLabel.setText(chords[i - 1]);
-			if (i == fifths.length)
+			chordIndex++;
+			chordLabel.setText(chords[chordIndex - 1]);
+			if (chordIndex == fifths.length)
 			{
 				cycleBool = false;
 				System.out.println("DONE WITH THE CYCLE!!!");
